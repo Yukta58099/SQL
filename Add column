@@ -1,0 +1,17 @@
+# Adding column
+
+----------------------------------------------------------------------------------------
+ALTER TABLE table_name --Syntax
+ADD column_name data_type;
+
+----------------------------------------------------------------------------------------
+
+ALTER TABLE Employee
+ADD email VARCHAR(100);
+
+----------------------------------------------------------------------------------------
+
+
+ALTER TABLE Employee --Adding multiple columns
+ADD COLUMN email VARCHAR(100),
+ADD COLUMN phone VARCHAR(15);
