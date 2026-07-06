@@ -1,0 +1,9 @@
+# Write a query to find all employees hired after 2023, sorted by salary descending. 
+------------------------------------------------------------------------------------------------------------------------
+Select employee_Id from Employees where hire_date > '2023-12-31' order by salary desc;
+------------------------------------------------------------------------------------------------------------------------
+
+SELECT employee_id -- Using YEAR funtion
+FROM Employees
+WHERE YEAR(hire_date) > 2023
+ORDER BY salary DESC;
