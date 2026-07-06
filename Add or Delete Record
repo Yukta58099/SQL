@@ -1,0 +1,12 @@
+# Add or Delete Record
+-------------------------------------------------------------------------------------
+
+INSERT INTO Employee (id, name, salary) --Add Record
+VALUES (1, 'John', 50000);
+-------------------------------------------------------------------------------------
+
+DELETE FROM Employee -- Deleting record
+WHERE id = 1;
+
+-------------------------------------------------------------------------------------
+DELETE FROM Employee;-- Deletes all the data
