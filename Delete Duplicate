@@ -1,1 +1,14 @@
+# Delete Duplicates
+---------------------------------------------------------------------------------
+
+WITH cte AS (
+    SELECT *,
+           ROW_NUMBER() OVER (
+               PARTITION BY name, salary
+               ORDER BY id
+           ) AS rn
+    FROM Employee
+)
+DELETE FROM cte
+WHERE rn > 1
 
