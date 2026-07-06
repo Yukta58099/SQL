@@ -1,0 +1,11 @@
+# Even Odd Record
+-----------------------------------------------------------------
+
+SELECT *  -- Even
+FROM Employee
+WHERE MOD(id, 2) = 0;
+------------------------------------------------------------------
+
+SELECT * -- Odd
+FROM Employee
+WHERE MOD(id, 2) = 1;
