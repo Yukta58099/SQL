@@ -1,0 +1,6 @@
+# Rename column
+---------------------------------------------------------------------------------
+
+
+ALTER TABLE Employee -- Syntax
+RENAME COLUMN emp_name TO employee_name;
