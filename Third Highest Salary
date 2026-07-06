@@ -1,0 +1,3 @@
+# Third Highest Salary
+
+Select from employee order by salary desc limit 1,offset 2;
