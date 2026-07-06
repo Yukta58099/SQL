@@ -1,0 +1,3 @@
+# find customers who have never placed an order.
+
+Select Customers.id as customers from Customers left join orders on Customers.id=orders .customerId where orders.customersId is null;
