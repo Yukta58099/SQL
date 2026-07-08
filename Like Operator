@@ -1,0 +1,6 @@
+How do you find the values in a text column of a table that start with a certain letter? 
+
+
+SELECT *
+FROM customers
+WHERE customer_name LIKE 'A%';
