@@ -1,0 +1,17 @@
+Write a query to find beverages where the contributor has only one name (no space). 
+-----------------------------------------------------------------------------------------
+
+SELECT *
+FROM beverages
+WHERE contributor_name NOT LIKE '% %'
+
+
+SELECT * --postgresql
+FROM beverages
+WHERE POSITION(' ' IN contributor_name) = 0;
+
+
+SELECT * --mysql
+FROM beverages
+WHERE INSTR(contributor_name, ' ') = 0;
+
