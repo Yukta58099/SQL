@@ -1,0 +1,14 @@
+# Random Rows
+----------------------------------------------------------------
+
+SELECT * -- Postgresql
+FROM customers
+ORDER BY RANDOM()
+LIMIT 3;
+
+
+SELECT * --Mysql
+FROM customers
+ORDER BY RAND()
+LIMIT 3;
+
