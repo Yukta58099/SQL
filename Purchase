@@ -1,7 +1,7 @@
 # Write a query that lists all the customers who had purchases in Jan'26 and did not make any purchases in Feb'26. 
 ---------------------------------------------------------------------------------------------------------------------
 
-SELECT DISTINCT customer_id
+SELECT DISTINCT customer_id -- Single table
 FROM purchases
 WHERE purchase_date >= '2026-01-01'
   AND purchase_date < '2026-02-01'
@@ -11,4 +11,40 @@ WHERE purchase_date >= '2026-01-01'
       WHERE purchase_date >= '2026-02-01'
         AND purchase_date < '2026-03-01'
   );
+
+
+SELECT c.CustomerID, --Two tables with Exists
+       c.CustomerName
+FROM Customers c
+WHERE EXISTS
+(
+    SELECT 1
+    FROM Orders o
+    WHERE o.CustomerID = c.CustomerID
+      AND o.PurchaseDate >= '2026-01-01'
+      AND o.PurchaseDate < '2026-02-01'
+)
+AND NOT EXISTS
+(
+    SELECT 1
+    FROM Orders o
+    WHERE o.CustomerID = c.CustomerID
+      AND o.PurchaseDate >= '2026-02-01'
+      AND o.PurchaseDate < '2026-03-01'
+);
+
+SELECT c.CustomerID, --Two tables with IN
+       c.CustomerName
+FROM Customers c
+JOIN Orders o
+    ON c.CustomerID = o.CustomerID
+WHERE o.PurchaseDate >= '2026-01-01'
+  AND o.PurchaseDate < '2026-02-01'
+  AND c.CustomerID NOT IN
+    (
+        SELECT CustomerID
+        FROM Orders
+        WHERE PurchaseDate >= '2026-02-01'
+          AND PurchaseDate < '2026-03-01'
+    );
 `
