@@ -1,0 +1,6 @@
+Write query for suppose we have emp table - 
+id, name, last login now we must find latest record for each employee 
+after that we must write another query to delete old records and keeping the latest record only 
+
+Select max(last_login) as latest_login from employee group by employee_id;
+
