@@ -1,1 +1,4 @@
+ 
+Write a query to find employee without manager   
+----------------------------------------------------------------------------
 SELECT employee_id ,employee_name FROM Employee WHERE manager_id IS NULL;
