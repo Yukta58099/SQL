@@ -11,3 +11,17 @@ c_date
 
 
 UPDATE railway SET c_status = 'cancelled' WHERE c_pnr = '1234343'  AND c_date = '2026-01-20'  AND c_id = '12';
+
+
+CREATE PROCEDURE CancelTicket( --Stored Procedure
+    IN p_pnr VARCHAR(20),
+    IN p_date DATE,
+    IN p_id INT
+)
+BEGIN
+   UPDATE railway
+   SET c_status = 'cancelled'
+   WHERE c_pnr = p_pnr
+   AND c_date = p_date
+   AND c_id = p_id;
+END;
