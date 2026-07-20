@@ -1,0 +1,1 @@
+Select customer_id,Count(order_id) from employee group by customer_id;
