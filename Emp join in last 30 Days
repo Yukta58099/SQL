@@ -1,3 +1,6 @@
+Write query to find emp join in last 30 days  
+--------------------------------------------------
+
 SELECT** --Mysql
 FROM employee
 WHERE hire_date >=*CURRENT_DATE - INTERVAL 30 DAY;
