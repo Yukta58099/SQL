@@ -1,0 +1,5 @@
+Write query to cancel the booking status of ticket of a single person on a PNR having multiple booking. 
+
+Update
+set
+where 
