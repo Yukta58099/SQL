@@ -1,5 +1,13 @@
 Write query to cancel the booking status of ticket of a single person on a PNR having multiple booking. 
 
-Update
-set
-where 
+Table - railway
+ 
+c_name
+c_id
+c_pnr
+c_status
+c_train_number
+c_date
+
+
+UPDATE railway SET c_status = 'cancelled' WHERE c_pnr = '1234343'  AND c_date = '2026-01-20'  AND c_id = '12';
