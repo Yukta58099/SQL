@@ -1,0 +1,9 @@
+How would you find duplicate rows in a table? 
+
+SELECT
+    name,
+    department,
+    COUNT(*) AS cnt
+FROM employees
+GROUP BY name, department
+HAVING COUNT(*) > 1;
