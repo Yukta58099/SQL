@@ -15,6 +15,9 @@ WHERE id IN (
     WHERE rn > 1
 );
 
+
+
+
 DELETE e1  --Self join
 FROM employees e1
 JOIN employees e2
