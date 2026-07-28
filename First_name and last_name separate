@@ -1,0 +1,11 @@
+EMP_ID	EMP_FULL_NAME	  GENDER
+1201	RAKESH.JAIN	      Male
+1202	DIANA.GEORGE	    Female
+1203	ADAM.MICHEL	      Male
+1204	NICHE.ZACK	      Male
+
+
+Write a query to display first name and last name separately from full name
+ 
+select emp_id, substring_index(emp_full_name, '.', 1 )as first_name, substring_index(emp_full_name,'.', -1) as last_name from emp 
+ 
