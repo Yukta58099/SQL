@@ -1,9 +1,16 @@
 How would you find duplicate rows in a table? 
 
-SELECT
-    name,
-    department,
+SELECT --Specific column
+    email
+    COUNT(email) AS cnt
+FROM employees
+GROUP BY email
+HAVING COUNT(email) > 1;
+
+
+SELECT --All duplicates
+    cust_id
     COUNT(*) AS cnt
 FROM employees
-GROUP BY name, department
+GROUP BY cust_id
 HAVING COUNT(*) > 1;
