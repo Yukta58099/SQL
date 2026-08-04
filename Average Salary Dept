@@ -5,6 +5,6 @@ SELECT * --Correlated subquery
 FROM employees e
 WHERE salary > (
     SELECT AVG(salary)
-    FROM employees
-    WHERE department = e.department
+    FROM employees e1
+    WHERE e1.department = e.department
 );
