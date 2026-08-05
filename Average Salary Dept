@@ -8,3 +8,20 @@ WHERE salary > (
     FROM employees e1
     WHERE e1.department = e.department
 );
+
+
+WITH cte AS (
+
+    SELECT *,
+
+           AVG(salary) OVER (PARTITION BY dept) AS dept_avg
+
+    FROM emp
+
+)
+
+SELECT *
+
+FROM cte
+
+WHERE salary > dept_avg;
