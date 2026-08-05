@@ -1,0 +1,23 @@
+Highest salary in each department
+
+WITH cte AS (
+
+    SELECT *,
+
+           DENSE_RANK() OVER (
+
+               PARTITION BY dept_id
+
+               ORDER BY salary DESC
+
+           ) AS dr
+
+    FROM emp
+
+)
+
+SELECT *
+
+FROM cte
+
+WHERE dr = 1;
