@@ -8,3 +8,5 @@ WHERE hire_date >=*CURRENT_DATE()- INTERVAL 30 DAY;
 SELECT * --Postgresql
 FROM employee
 WHERE hire_date >= CURRENT_DATE - INTERVAL '30 days';
+
+for months current_date-interval '6 months';
