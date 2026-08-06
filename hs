@@ -6,5 +6,8 @@ Select max(salary) from employee where salary<(select max(salary) from employee)
 
 Select ifnull((Select from employee order by salary desc limit 1,offset 1),null) as secondhighestsalary; --Adding ifnull
 
+with cte as (select  *,cust_id , dense_rank() over( order by salary desc) as dr from emp ) -- using Window function
+select * from cte where dr = n;
+
 
 
