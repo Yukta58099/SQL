@@ -1,4 +1,4 @@
-SELECT emp_id,
+SELECT emp_id,--Salary Greater Than Previous Employee
        salary,
        LAG(salary) OVER (ORDER BY emp_id) prev_salary
 FROM employees;
@@ -13,3 +13,8 @@ WITH cte AS (  --CTE with Window functions
 SELECT *
 FROM cte
 WHERE salary > prev_salary;
+
+SELECT product_id, --Current Row with Next Row
+       price,
+       LEAD(price) OVER (ORDER BY product_id) next_price
+FROM products;
