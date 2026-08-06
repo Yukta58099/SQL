@@ -1,14 +1,22 @@
 # Delete Duplicates
 ---------------------------------------------------------------------------------
 
+id   email
+1    a@gmail.com
+2    a@gmail.com
+3    b@gmail.com
+4    c@gmail.com
+5    b@gmail.com
+
 WITH cte AS (
     SELECT *,
            ROW_NUMBER() OVER (
-               PARTITION BY name, salary
+               PARTITION BY email
                ORDER BY id
            ) AS rn
-    FROM Employee
+    FROM users
 )
-DELETE FROM cte
-WHERE rn > 1
+SELECT *
+FROM cte
+WHERE rn > 1;
 
