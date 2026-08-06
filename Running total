@@ -1,0 +1,17 @@
+id   dept   salary
+1    HR     1000
+2    HR     2000
+3    HR     1500
+4    IT     3000
+5    IT     1000
+
+Select id,dept,salary,Sum(salary) over(partition by dept order by id) as running total from employees;
+
+order_id    order_date    amount
+1           2024-01-01    100
+2           2024-01-02    200
+3           2024-01-03    150
+4           2024-01-04    300
+5           2024-01-05    250
+
+Select order_id,order_date,sum(amount) over (order by order_id) as running total from orders;
