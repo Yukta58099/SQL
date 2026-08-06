@@ -3,4 +3,4 @@ Jan 100
 Feb 120
 Mar 90
 
-Select month,sales,sales-
+Select month,sales,sales-LAG(sales) Over(order by month) as growth from sales;
