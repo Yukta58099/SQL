@@ -1,0 +1,15 @@
+SELECT emp_id,
+       salary,
+       LAG(salary) OVER (ORDER BY emp_id) prev_salary
+FROM employees;
+
+
+WITH cte AS (  --CTE with Window functions
+    SELECT emp_id,
+           salary,
+           LAG(salary) OVER (ORDER BY emp_id) prev_salary
+    FROM employees
+)
+SELECT *
+FROM cte
+WHERE salary > prev_salary;
