@@ -1,5 +1,6 @@
 # Write a query that lists all the customers who had purchases in Jan'26 and did not make any purchases in Feb'26. 
 ---------------------------------------------------------------------------------------------------------------------
+In/Not In-generally return one column not multiple columns.
 
 SELECT DISTINCT customer_id -- Single table
 FROM purchases
