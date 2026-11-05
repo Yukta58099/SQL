@@ -4,3 +4,17 @@ after that we must write another query to delete old records and keeping the lat
 
 Select max(last_login) as latest_login from employee group by employee_id;
 
+
+WITH cte AS ( --Using row_number
+    SELECT *,
+           ROW_NUMBER() OVER (
+               PARTITION BY id
+               ORDER BY last_login DESC
+           ) AS rn
+    FROM emp
+)
+SELECT *
+FROM cte
+WHERE rn = 1;
+
+Dense_rank() -if asked latest record with tie .
