@@ -1,0 +1,22 @@
+WITH cte AS (
+    SELECT
+        user_id,
+        login_date,
+        ROW_NUMBER() OVER (
+            PARTITION BY user_id
+            ORDER BY login_date
+        ) AS rn
+    FROM Logins
+),
+grp AS (
+    SELECT
+        user_id,
+        login_date,
+        DATE_SUB(login_date, INTERVAL rn DAY) AS grp_id
+    FROM cte
+)
+SELECT
+    user_id
+FROM grp
+GROUP BY user_id, grp_id
+HAVING COUNT(*) >= 3;
