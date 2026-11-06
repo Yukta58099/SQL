@@ -8,15 +8,26 @@ id   email
 4    c@gmail.com
 5    b@gmail.com
 
-WITH cte AS (
-    SELECT *,
+
+Delete e1 --using self join
+from employee e1 
+join employee e2 
+on e1.name=e2.name and e1.salary=e2.salary 
+and e1.id>e2.id
+
+
+WITH cte AS ( --Postgresql with cte 
+    SELECT id,
            ROW_NUMBER() OVER (
-               PARTITION BY email
+               PARTITION BY name, salary
                ORDER BY id
            ) AS rn
-    FROM users
+    FROM employee
 )
-SELECT *
-FROM cte
-WHERE rn > 1;
+DELETE FROM employee
+WHERE id IN (
+    SELECT id
+    FROM cte
+    WHERE rn > 1
+);
 
