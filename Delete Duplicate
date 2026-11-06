@@ -1,12 +1,15 @@
 # Delete Duplicates
 ---------------------------------------------------------------------------------
 
-id   email
-1    a@gmail.com
-2    a@gmail.com
-3    b@gmail.com
-4    c@gmail.com
-5    b@gmail.com
+emp
++--------+-------+---------------------+
+| id     | name  | last_login          |
++--------+-------+---------------------+
+| 1      | John  | 2024-01-01 10:00:00 |
+| 2      | John  | 2024-01-05 12:00:00 |
+| 3      | Alice | 2024-01-02 09:00:00 |
+| 4      | Alice | 2024-01-07 08:00:00 |
++--------+-------+---------------------+
 
 
 Delete e1 --using self join
@@ -25,6 +28,23 @@ WITH cte AS ( --Postgresql with cte
     FROM employee
 )
 DELETE FROM employee
+WHERE id IN (
+    SELECT id
+    FROM cte
+    WHERE rn > 1
+);
+
+
+
+WITH cte AS ( --same login
+    SELECT *,
+           ROW_NUMBER() OVER(
+               PARTITION BY name
+               ORDER BY last_login DESC, id DESC
+           ) rn
+    FROM emp
+)
+DELETE FROM emp
 WHERE id IN (
     SELECT id
     FROM cte
