@@ -8,9 +8,25 @@ GROUP BY email
 HAVING COUNT(email) > 1;
 
 
-SELECT --All duplicates
-    cust_id
-    COUNT(*) AS cnt
-FROM employees
-GROUP BY cust_id
-HAVING COUNT(*) > 1;
+WITH cte AS ( --Duplicates rows 
+    SELECT *,
+           ROW_NUMBER() OVER(
+               PARTITION BY email
+               ORDER BY id
+           ) rn
+    FROM Employee
+)
+SELECT *
+FROM cte
+WHERE rn > 1;
+
+
+WITH cte AS ( show all records with the duplicate emails
+    SELECT *,
+           COUNT(*) OVER(PARTITION BY email) cnt
+    FROM employees
+)
+SELECT *
+FROM cte
+WHERE cnt > 1;
+
